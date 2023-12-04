@@ -1,0 +1,45 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="container body-content">
+    {% if form != None %}
+    <h2>Отправьте пожалуйста заполненную анкету</h2><br />
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+            {{ form.name }}<br /><br />
+            <label for="{{ form.site_rating.id_for_label }}">{{ form.site_rating.label }}:</label>
+            {{ form.site_rating }}<br />
+            <label for="{{ form.feedback_text.id_for_label }}">{{ form.feedback_text.label }}:</label>
+            {{ form.feedback_text }}<br /><br />
+            <label for="{{ form.likes_merch.id_for_label }}">{{ form.likes_merch.label }}:</label>
+            {{ form.likes_merch }}<br /><br />
+            <label for="{{ form.likes_community.id_for_label }}">{{ form.likes_community.label }}:</label>
+            {{ form.likes_community }}<br /><br />
+            <label for="{{ form.favorite_game.id_for_label }}">{{ form.favorite_game.label }}:</label>
+            {{ form.favorite_game }}<br /><br />
+            <label for="{{ form.suggestions.id_for_label }}">{{ form.suggestions.label }}:</label>
+            {{ form.suggestions }}<br /><br />
+            <input type="submit" value="Отправить" id="submitButton" />
+        </form>
+    </div>
+    {% else %}
+    <br /><h2>Спасибо за отзыв!</h2>
+    <h3>Вы сообщили о себе следующее:</h3>
+    <ul>
+        <li><span>Имя:</span> {{ data.name  }}</li>
+        <li><span>Оценка сайта:</span> {{ data.site_rating  }}</li>
+        <li><span>Отзыв:</span> {{ data.feedback_text  }}</li>
+        <li><span>Нравится мерч:</span> {{ data.likes_merch  }}</li>
+        <li><span>Нравится сообщество:</span> {{ data.likes_community  }}</li>
+        <li><span>Любимая игра:</span> {{ data.favorite_game  }}</li>
+        <li><span>Ваши пожелания:</span> {{ data.suggestions  }}</li>
+    </ul>
+    {% endif %}
+    <hr />
+    <footer>
+        <p>&copy; {{ year }} - Solo Users Community</p>
+    </footer>
+</div>
+    {% endblock %}

@@ -1,0 +1,35 @@
+﻿{% extends "app/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container body-content">
+    <h2>{{ title }}.</h2>
+    <h3>{{ message }}</h3>
+
+    <div class="icon_for_urls">
+        <a href="https://www.tiktok.com/@solo_users" target="_blank">
+            <img src="{% static 'app/content/tiktokIcon_section.png' %}" alt="TikTok">
+            <span>TikTok</span>
+        </a>
+        <br />
+        <a href="https://vk.com/solo_users" target="_blank">
+            <img src="{% static 'app/content/vkIcon_section.png' %}" alt="VK">
+            <span>ВКонтакте</span>
+        </a>
+        <br />
+        <a href="https://www.youtube.com/@Solo_Users" target="_blank">
+            <img src="{% static 'app/content/youtubeIcon_section.png' %}" alt="YouTube">
+            <span>YouTube</span>
+        </a>
+        <br />
+        <a href="https://discord.gg/h5aqftPmjN" target="_blank">
+            <img src="{% static 'app/content/discordIcon_section.png' %}" alt="Discord">
+            <span>Discord</span>
+        </a>
+    </div>
+    <hr />
+    <footer>
+        <p>&copy; {{ year }} - Solo Users Community</p>
+    </footer>
+</div>
+{% endblock %}

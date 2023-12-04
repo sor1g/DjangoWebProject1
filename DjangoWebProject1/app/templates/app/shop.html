@@ -1,0 +1,53 @@
+﻿{% extends "app/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container body-content">
+    <form method="get" action="{% url 'shop' %}" id="categoryForm">
+        <div class="categories">
+            <h3>Категории</h3>
+            <ul>
+                {% for category in categories %}
+                <li>
+                    {% if category.name == "Все товары" %}
+                    <a href="{% url 'shop' %}">{{ category.name }}</a>
+                    {% else %}
+                    <a href="#" onclick="selectCategory({{ category.id }});">{{ category.name }}</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <input type="hidden" name="category_id" id="categoryIdInput">
+    </form>
+
+    <div class="products">
+        {% if selected_category %}
+        <h3>{{ selected_category.name }} ({{ products.count }} товаров)</h3>
+        {% else %}
+        <h3>Все товары ({{ products.count }} товаров)</h3>
+        {% endif %}
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-item">
+                <a href="{% url 'product_detail' product_id=product.id %}">
+                    <img src="{% static 'app/products/product1.jpg' %}" alt="{{ product.name }}">
+                    <p>{{ product.name }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <hr />
+    <footer>
+        <p>&copy; {{ year }} - Solo Users Community</p>
+    </footer>
+</div>
+
+<script>
+    function selectCategory(categoryId) {
+        document.getElementById('categoryIdInput').value = categoryId;
+        document.getElementById('categoryForm').submit();
+    }
+</script>
+{% endblock %}

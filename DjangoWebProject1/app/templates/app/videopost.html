@@ -1,0 +1,37 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="container body-content">
+    <h1>{{ title }}</h1>
+    <hr />
+    <div>
+        <h2>Видео-ролик 1</h2>
+        <VIDEO src="/media/video1.mp4" controls="controls" width="800" height="400" poster="/media/poster1.jpg" preload="auto">
+            <source src="/media/video1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src="/media/video1.ogv" type='video/ogg; codecs="theora, vorbis"'>
+            <source src="/media/video1.webm" type='video/webm; codecs="vp8, vorbis"'>
+            Тег video не поддерживается вашим браузером
+            <a href="/media/video1.mp4">Скачайте видео</a>
+        </VIDEO>
+    </div>
+    <hr />
+    <div>
+        <h2>Видео-ролик 2</h2>
+        <VIDEO id="myVideo" src="/media/video2.mp4" controls="controls" width="800" height="400" poster="/media/poster2.jpg" preload="auto">
+            <source src="/media/video2.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            <source src="/media/video2.ogv" type='video/ogg; codecs="theora, vorbis"'>
+            <source src="/media/video2.webm" type='video/webm; codecs="vp8, vorbis"'>
+            Тег video не поддерживается вашим браузером
+            <a href="/media/video2.mp4">Скачайте видео</a>
+        </VIDEO>
+    </div>
+    <script>
+        var myVideo = document.getElementById("myVideo");
+        myVideo.volume = 0.05; // устанавливаем громкость в 0.05 от максимального
+    </script>
+    <hr />
+    <footer>
+        <p>&copy; {{ year }} - Solo Users Community</p>
+    </footer>
+</div>
+{% endblock %}

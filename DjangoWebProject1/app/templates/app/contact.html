@@ -1,0 +1,25 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="container body-content">
+
+    <h2>{{ title }}.</h2>
+    <h3>{{ message }}</h3>
+
+    <address>
+        Фирма<br />
+        Улица, дом<br />
+        <abbr title="телефон">P:</abbr>
+        425.555.0100
+    </address>
+
+    <address>
+        <strong>Техническая поддержка:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Отдел маркетинга:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+    <hr />
+    <footer>
+        <p>&copy; {{ year }} - Solo Users Community</p>
+    </footer>
+</div>
+    {% endblock %}
