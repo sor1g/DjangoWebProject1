@@ -17,6 +17,7 @@ from django.conf import settings
 from app.views import shop
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('shop/', views.shop, name='shop'),
     path('category/<int:category_id>/', views.category, name='category'),
     path('product/<int:product_id>/', views.product_detail, name='product_detail'),
@@ -54,4 +55,3 @@ urlpatterns = [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()
-
