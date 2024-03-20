@@ -1,0 +1,44 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="container body-content">
+    <h2>{{ title }}</h2>
+    {% if order %}
+    <p>Номер заказа: {{ order.id }}</p>
+    <p>Имя заказчика: {{ order.user.username }}</p>
+    <p>Статус: {{ order.status }}</p>
+    <p>Дата создания: {{ order.created_at|date:"Y-m-d H:i:s" }}</p>
+    <p>Стоимость: {{ order.total_price }} руб.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Изображение</th>
+                <th>Товар</th>
+                <th>Размер</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order_item in order.order_items.all %}
+            <tr class="img-cart">
+                <td><img src="{{ order_item.product.image }}" alt="Товар" /></td>
+                <td>{{ order_item.product.name }}</td>
+                <td>{{ order_item.product.sizes|default:" "}}</td>
+                <td>{{ order_item.price }} руб.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Здесь можно добавить дополнительные детали заказа -->
+    {% else %}
+    <p>Заказ не найден.</p>
+    {% endif %}
+    <hr />
+    <footer>
+        <p>&copy; {{ year }} - Solo Users Community</p>
+    </footer>
+</div>
+{% endblock %}

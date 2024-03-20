@@ -31,7 +31,7 @@
             {% for product in products %}
             <div class="product-item">
                 <a href="{% url 'product_detail' product_id=product.id %}">
-                    <img src="{% static 'app/products/product1.jpg' %}" alt="{{ product.name }}">
+                    <img src="{{ product.image }}" alt="{{ product.name }}">
                     <p>{{ product.name }}</p>
                 </a>
             </div>

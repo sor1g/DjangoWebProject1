@@ -2213,9 +2213,11 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .btn-success {
-  color: #ffffff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+ color: #ffffff;
+ background-color: #198754;
+ padding: 5px 10px;
+ border-radius: 4px;
+ transition: background-color 0.3s ease;
 }
 
 .btn-success:hover,
@@ -2223,9 +2225,10 @@ fieldset[disabled] .btn-danger.active {
 .btn-success:active,
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
-  color: #ffffff;
-  background-color: #47a447;
-  border-color: #398439;
+  color: #fff;
+  text-decoration: none;
+  background-color: #329240;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .btn-success:active,

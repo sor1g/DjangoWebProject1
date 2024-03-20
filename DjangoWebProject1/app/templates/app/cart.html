@@ -1,0 +1,48 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="container body-content">
+    <h2>Корзина заказов</h2>
+    {% if cart_items %}
+    <table>
+        <thead>
+            <tr>
+                <th>Изображение</th>
+                <th>Товар</th>
+                <th>Размер</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr class="img-cart">
+                <td><img src="{{ item.product.image }}" alt="Товар" /></td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.sizes|default:" "}}</td>
+                <td>{{ item.product.price }} руб.</td>
+                <td><a href="{% url 'remove_from_cart' item.id %}">Удалить</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="total-cost">
+        <br />
+        <p>Итого: {{ total_price }} руб.</p>
+        <div>
+            <a class="btn-continue-shopping" href="/shop/">Продолжить покупки</a>
+            <form method="post" action="{% url 'create_order' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn-success">Оформить заказ</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <p>Ваша корзина пуста.</p>
+    {% endif %}
+    <hr />
+    <footer>
+        <p>&copy; {{ year }} - Solo Users Community</p>
+    </footer>
+</div>
+{% endblock %}

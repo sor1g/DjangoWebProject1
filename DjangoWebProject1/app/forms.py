@@ -6,6 +6,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms.formsets import MIN_NUM_FORM_COUNT
 from django.utils.translation import gettext_lazy as _
+from .models import Feedback
 
 from django.db import models
 from .models import Comment
